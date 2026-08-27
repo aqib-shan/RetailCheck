@@ -1,51 +1,97 @@
 # Retail Intelligence & Demand Forecasting
 
-An end-to-end retail analytics and demand forecasting project that transforms raw transactional data into actionable business insights using Python, PostgreSQL, machine learning, and Power BI.
+End-to-end retail analytics and demand forecasting solution built with **Python, PostgreSQL, SQL, machine learning, and Power BI**.
 
-The project covers the complete analytics workflow: data cleaning, database modeling, SQL analytics, customer segmentation, product performance analysis, demand forecasting, and interactive business intelligence dashboards.
+The project transforms **536,641 retail transactions** into an analytics-ready PostgreSQL database, customer and product insights, and product-level demand forecasts using automated model evaluation.
+
+---
+
+## Dashboard Preview
+
+### Executive Overview
+
+![Executive Overview](powerbi/executive_overview.png)
+
+### Customer Analytics
+
+![Customer Analytics](powerbi/customer_analytics.png)
+
+### Product & Demand Analytics
+
+![Product & Demand Analytics](powerbi/product_and_demand_analytics.png)
+
+---
+
+## Key Highlights
+
+- Processed and loaded **536,641 retail transactions** into PostgreSQL
+- Built reusable **SQL analytics views** for reporting and business analysis
+- Developed **RFM customer segmentation**
+- Performed **cohort retention analysis**
+- Analyzed product, customer, country, and revenue performance
+- Evaluated **Naive, 4-Week Moving Average, 8-Week Moving Average, and Random Forest** forecasting models
+- Automatically selected the **lowest-MAE model for each product**
+- Generated **4-week demand forecasts for 20 products**
+- Loaded **80 forecast records** into PostgreSQL
+- Built a **3-page interactive Power BI dashboard**
+- Implemented **product-level report-page tooltips**
+- Protected database credentials using environment variables and Git-safe configuration
+
+---
 
 ## Project Overview
 
-Retail businesses need to understand not only what has happened historically, but also which customers and products drive performance and what demand may look like in the future.
+Retail businesses need to understand both historical performance and future demand.
 
-This project builds an analytics pipeline around retail transaction data to answer questions such as:
+This project builds an end-to-end analytics pipeline designed to answer business questions such as:
 
-- Which products generate the most revenue and sales volume?
-- Which customer segments contribute the most value?
-- Which customers may be at risk of becoming inactive?
-- How well are customers retained over time?
+- Which products generate the most revenue?
+- Which products sell the highest number of units?
 - Which countries contribute the most revenue?
-- What demand can be expected for high-volume products over the next four weeks?
+- Which customer segments generate the most value?
+- Which customers are at risk of becoming inactive?
+- How well are customers retained over time?
+- What demand can be expected for selected products over the next four weeks?
 
-The final analytical layer is presented through a three-page Power BI dashboard covering executive performance, customer analytics, and product demand forecasting.
+The final analytical layer is presented through an interactive Power BI dashboard covering:
+
+1. Executive performance
+2. Customer analytics
+3. Product performance and demand forecasting
 
 ---
 
 ## Tech Stack
 
-**Programming & Data Processing**
+### Programming & Data Processing
+
 - Python
 - pandas
 - NumPy
 
-**Machine Learning & Forecasting**
+### Machine Learning & Forecasting
+
 - scikit-learn
 - Random Forest
 - Naive Forecasting
 - Moving Average Models
+- Mean Absolute Error (MAE)
 
-**Database & Analytics**
+### Database & Analytics
+
 - PostgreSQL
 - SQL
 - SQLAlchemy
 - psycopg2
 
-**Business Intelligence**
+### Business Intelligence
+
 - Power BI
 - DAX
 - Power Query
 
-**Development**
+### Development
+
 - Git
 - GitHub
 - Visual Studio Code
@@ -67,35 +113,41 @@ Processed Transaction Data
       v
 PostgreSQL Database
       |
-      +--------------------+
-      |                    |
-      v                    v
+      +----------------------+
+      |                      |
+      v                      v
 SQL Analytics Views    Forecasting Pipeline
-      |                    |
-      |               Model Evaluation
-      |                    |
-      |               Best Model Selection
-      |                    |
-      |               4-Week Forecasts
-      |                    |
-      +----------+---------+
-                 |
-                 v
-              Power BI
-                 |
-      +----------+----------+
-      |          |          |
- Executive   Customer    Product &
- Overview    Analytics   Demand Analytics
+      |                      |
+      |                Weekly Demand
+      |                      |
+      |                Model Evaluation
+      |                      |
+      |                Best Model Selection
+      |                      |
+      |                4-Week Forecasts
+      |                      |
+      +-----------+----------+
+                  |
+                  v
+               Power BI
+                  |
+       +----------+----------+
+       |          |          |
+   Executive   Customer   Product &
+    Overview   Analytics  Demand Analytics
 ```
 
 ---
 
-## Power BI Dashboards
+## Power BI Dashboard
 
-### Executive Overview
+The reporting layer contains three interactive dashboard pages.
 
-Provides a high-level view of retail performance, including:
+### 1. Executive Overview
+
+Provides a high-level view of overall retail performance.
+
+Key metrics and analyses include:
 
 - Total Revenue
 - Total Orders
@@ -107,13 +159,11 @@ Provides a high-level view of retail performance, including:
 - Customer Segment Distribution
 - Product Demand Forecast
 
-![Executive Overview](powerbi/executive-overview.png)
+### 2. Customer Analytics
 
-### Customer Analytics
+Provides deeper analysis of customer behavior, value, segmentation, and retention.
 
-Focuses on customer behavior, segmentation, value, and retention.
-
-Key analysis includes:
+Key components include:
 
 - Total Customers
 - Champion Customers
@@ -124,11 +174,9 @@ Key analysis includes:
 - Average Orders by Customer Segment
 - Cohort Retention Analysis
 
-![Customer Analytics](powerbi/Customer-Analytics.png)
+### 3. Product & Demand Analytics
 
-### Product & Demand Analytics
-
-Analyzes product performance and future demand.
+Connects historical product performance with forward-looking demand forecasting.
 
 Key components include:
 
@@ -140,21 +188,21 @@ Key components include:
 - Top Products by Units Sold
 - Interactive Product Selection
 - Four-Week Product Demand Forecast
-- Product-Level Tooltip Analysis
-
-![Product & Demand Analytics](powerbi/Product-and-Demand-Analytics.png)
+- Product-Level Report-Page Tooltips
 
 ---
 
 ## Customer Segmentation
 
-Customers are segmented using **RFM analysis**:
+Customers are segmented using **RFM analysis**.
 
-- **Recency** – how recently a customer purchased
-- **Frequency** – how frequently the customer purchases
-- **Monetary Value** – how much revenue the customer generates
+RFM represents:
 
-The resulting business-oriented customer segments include:
+- **Recency** — how recently a customer purchased
+- **Frequency** — how frequently the customer purchases
+- **Monetary Value** — how much revenue the customer generates
+
+Customers are grouped into business-oriented segments:
 
 - Champions
 - Loyal Customers
@@ -163,7 +211,7 @@ The resulting business-oriented customer segments include:
 - Lost Customers
 - New Customers
 
-This allows customer performance to be analyzed beyond aggregate revenue and order metrics.
+This allows customer behavior to be analyzed beyond aggregate sales metrics.
 
 ---
 
@@ -171,14 +219,16 @@ This allows customer performance to be analyzed beyond aggregate revenue and ord
 
 Customer retention is analyzed by grouping customers according to their first purchase month.
 
-The cohort matrix tracks the percentage of customers who return in subsequent months, providing insight into:
+The cohort matrix tracks the percentage of customers who return during subsequent months.
+
+This provides insight into:
 
 - Customer retention behavior
 - Repeat purchasing
-- Long-term engagement
+- Long-term customer engagement
 - Differences between acquisition cohorts
 
-The resulting retention matrix is visualized as a heatmap in Power BI.
+The resulting cohort retention matrix is visualized as a heatmap in Power BI.
 
 ---
 
@@ -186,18 +236,20 @@ The resulting retention matrix is visualized as a heatmap in Power BI.
 
 The forecasting pipeline evaluates multiple forecasting approaches independently for each selected product.
 
-The models evaluated are:
+### Models Evaluated
 
 1. Naive Forecast
 2. 4-Week Moving Average
 3. 8-Week Moving Average
 4. Random Forest
 
-Forecast performance is compared using **Mean Absolute Error (MAE)**.
+Forecast accuracy is evaluated using **Mean Absolute Error (MAE)**.
 
-Instead of applying one forecasting model to every product, the pipeline automatically selects the model with the lowest MAE for each product.
+Rather than applying one forecasting model to every product, the pipeline automatically selects the model with the **lowest MAE for each individual product**.
 
-### Model Selection Results
+---
+
+## Model Selection Results
 
 The evaluation of 20 forecastable products selected:
 
@@ -208,15 +260,13 @@ The evaluation of 20 forecastable products selected:
 | Moving Average 4 | 3 |
 | Moving Average 8 | 3 |
 
-This product-level model selection allows products with different demand patterns to use different forecasting approaches.
+Different products can therefore use different forecasting approaches depending on their historical demand patterns.
 
-The selected models are then used to generate a **four-week demand forecast** for each product.
+The selected models are then used to generate four future weekly forecasts for each product.
 
 ---
 
 ## Forecasting Pipeline
-
-The forecasting workflow follows these steps:
 
 ```text
 Historical Transactions
@@ -249,7 +299,7 @@ Load Forecasts into PostgreSQL
 Visualize in Power BI
 ```
 
-The current pipeline evaluates **20 products** and generates four future weekly observations for each product, producing **80 forecast records**.
+The current pipeline evaluates **20 products** and generates **4 future weekly forecasts per product**, resulting in **80 forecast records**.
 
 ---
 
@@ -260,16 +310,15 @@ retail-intelligence/
 │
 ├── data/
 │   ├── raw/
+│   │   └── .gitkeep
+│   │
 │   └── processed/
-│
-├── docs/
-│
-├── notebooks/
+│       └── .gitkeep
 │
 ├── powerbi/
-│   ├── Customer-Analytics.png
-│   ├── executive-overview.png
-│   ├── Product-and-Demand-Analytics.png
+│   ├── customer_analytics.png
+│   ├── executive_overview.png
+│   ├── product_and_demand_analytics.png
 │   └── tool_tip_demo.png
 │
 ├── sql/
@@ -281,8 +330,8 @@ retail-intelligence/
 │   ├── config.py
 │   ├── data_profile.py
 │   ├── etl.py
-│   ├── forecast_products.py
 │   ├── forecast.py
+│   ├── forecast_products.py
 │   ├── generate_forecasts.py
 │   ├── load_database.py
 │   └── load_forecasts.py
@@ -293,40 +342,48 @@ retail-intelligence/
 └── requirements.txt
 ```
 
+Large raw and processed datasets are excluded from Git to keep the repository lightweight.
+
 ---
 
-## Local Setup
+# Local Setup
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd retail-intelligence
+git clone https://github.com/TAMANGP2/retail-intelligence-demand-forecasting.git
+cd retail-intelligence-demand-forecasting
 ```
 
-### 2. Create a Python Virtual Environment
+---
 
-Python 3.10 is recommended for this project.
+## 2. Create a Python Virtual Environment
 
-Windows:
+Python **3.10** is recommended.
+
+### Windows
 
 ```powershell
 py -3.10 -m venv .venv
 ```
 
-Activate it:
+Activate the environment:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install Dependencies
+---
+
+## 3. Install Dependencies
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-### 4. Configure PostgreSQL
+---
+
+## 4. Configure PostgreSQL
 
 Create a PostgreSQL database named:
 
@@ -334,7 +391,19 @@ Create a PostgreSQL database named:
 retail_intelligence
 ```
 
-Copy `.env.example` to `.env` and configure your database credentials:
+Copy:
+
+```text
+.env.example
+```
+
+to:
+
+```text
+.env
+```
+
+Then configure your database credentials:
 
 ```env
 DB_HOST=localhost
@@ -344,9 +413,11 @@ DB_USER=postgres
 DB_PASSWORD=your_password
 ```
 
-The `.env` file is excluded from Git and should never be committed.
+The `.env` file is excluded from Git and should **never be committed**.
 
-### 5. Create the Database Schema
+---
+
+## 5. Create the Database Schema
 
 Run:
 
@@ -356,53 +427,73 @@ sql/01_create_schema.sql
 
 against the `retail_intelligence` PostgreSQL database.
 
-### 6. Prepare the Data
+The SQL layer defines the database structures required by the analytics pipeline.
 
-Run the ETL pipeline as required to generate:
+---
+
+## 6. Prepare the Data
+
+Place the source retail dataset in the appropriate raw-data directory and run the ETL pipeline as required.
+
+The processed transaction dataset is generated as:
 
 ```text
 data/processed/clean_transactions.csv
 ```
 
-### 7. Load Transactions into PostgreSQL
+Raw and processed datasets are excluded from the public Git repository.
+
+---
+
+## 7. Load Transactions into PostgreSQL
 
 ```powershell
 python -m src.load_database
 ```
 
-The loader clears existing transaction records before loading the processed dataset, preventing duplicate rows when the command is rerun.
+The loader clears existing transaction records before inserting the processed dataset, preventing duplicate records when the command is rerun.
 
-For the current processed dataset, successful verification produces:
+For the current dataset, successful verification produces:
 
 ```text
 536,641 transactions
 ```
 
-### 8. Evaluate Forecasting Models
+---
+
+## 8. Evaluate Forecasting Models
 
 ```powershell
 python -m src.forecast_products
 ```
 
-This evaluates candidate forecasting models and saves the results to:
+The script evaluates the candidate forecasting models for each selected product and determines the best-performing model using MAE.
+
+Evaluation results are saved locally to:
 
 ```text
 data/processed/forecast_model_evaluation.csv
 ```
 
-### 9. Generate Product Forecasts
+---
+
+## 9. Generate Product Forecasts
 
 ```powershell
 python -m src.generate_forecasts
 ```
 
-Forecasts are saved to:
+The selected model for each product is used to generate four future weekly forecasts.
+
+Forecasts are saved locally to:
 
 ```text
 data/processed/product_demand_forecasts.csv
 ```
 
-### 10. Load Forecasts into PostgreSQL
+---
+
+## 10. Load Forecasts into PostgreSQL
 
 ```powershell
 python -m src.load_forecasts
@@ -420,7 +511,7 @@ representing four forecast weeks for 20 products.
 
 ## Reproducing the Forecast Pipeline
 
-After the database and processed data have been prepared, the core workflow can be executed with:
+Once PostgreSQL and the processed transaction data are ready, the main forecasting workflow can be reproduced with:
 
 ```powershell
 python -m src.load_database
@@ -433,9 +524,9 @@ python -m src.load_forecasts
 
 ## Analytics Layer
 
-SQL views provide a reusable analytics layer between the transactional database and Power BI.
+Reusable SQL views provide an analytical layer between the transactional database and Power BI.
 
-The analytics layer supports areas such as:
+The analytics layer supports:
 
 - Executive KPIs
 - Monthly sales trends
@@ -446,43 +537,32 @@ The analytics layer supports areas such as:
 - Cohort retention
 - Forecast integration
 
-This keeps business logic centralized instead of reproducing transformations independently inside dashboard visuals.
+This keeps business logic centralized rather than reproducing transformations separately across dashboard visuals.
 
 ---
 
-## Key Project Features
+## Repository Data Policy
 
-- End-to-end ETL pipeline using Python
-- PostgreSQL relational analytics database
-- Reusable SQL analytics views
-- RFM-based customer segmentation
-- Cohort retention analysis
-- Product performance analysis
-- Multi-model demand forecasting
-- MAE-based model selection per product
-- Four-week product demand forecasts
-- Interactive Power BI dashboard
-- Product-level report-page tooltips
-- Reproducible Python virtual environment
-- Environment-variable based database configuration
+The original retail dataset and generated processed CSV files are intentionally excluded from Git.
 
----
+The repository contains `.gitkeep` files so that the required data directory structure remains available after cloning.
 
-## Dashboard Highlights
+Excluded files include:
 
-The completed solution provides three analytical perspectives:
+```text
+data/raw/Online Retail.xlsx
+data/processed/clean_transactions.csv
+data/processed/forecast_model_evaluation.csv
+data/processed/product_demand_forecasts.csv
+```
 
-**Executive Overview** provides management-level visibility into revenue, orders, customers, geographic performance, product performance, and overall trends.
-
-**Customer Analytics** provides deeper insight into customer value, behavioral segments, purchase frequency, at-risk customers, and retention.
-
-**Product & Demand Analytics** connects historical product performance with forward-looking demand forecasts and allows individual products to be explored interactively.
+Database credentials are also excluded through the `.env` file.
 
 ---
 
 ## Future Improvements
 
-Potential extensions include:
+Potential extensions to the project include:
 
 - Automated scheduled data refresh
 - Additional time-series forecasting models
@@ -503,4 +583,4 @@ Potential extensions include:
 
 Computer Science | Data Analytics | Software Development
 
-GitHub: TAMANGP2
+GitHub: **TAMANGP2**
