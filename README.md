@@ -17,8 +17,3 @@ RetailCheck is a data analytics project focused on retail transaction analysis, 
 2. Install the required Python dependencies.
 3. Configure the database connection.
 4. Run the data processing and analysis scripts.
-
-## Author
-[Aqib Shan](https://github.com/aqib-shan)
-
-*Originally based on work by [Palden Tamang](https://github.com/TAMANGP2).*
